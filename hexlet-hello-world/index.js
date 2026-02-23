@@ -1,3 +1,3 @@
-import _ from "lodash";
+import funcFromSrc from "../src/index.js";
 
-console.log(_.last(["one", "two"]));
+funcFromSrc();
