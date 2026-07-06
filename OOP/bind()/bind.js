@@ -1,8 +1,13 @@
-const obj = { number: 5 };
-const fn = function fn(number) {
-  return number + this.number;
+const bind = (obj, fn) => {
+  return (...args) => {
+    return fn.apply(obj, args);
+  };
 };
-const fnWithContext = bind(obj, fn);
 
-// Принимает столько же аргументов сколько и исходная функция
-fnWithContext(3); // 8
+const user = { name: "Roma" };
+const greet = function (greeting, punctuation) {
+  return `${greeting}, ${this.name}${punctuation}`;
+};
+const boundGreet = bind(user, greet);
+
+console.log(boundGreet("Hello", "!"));
